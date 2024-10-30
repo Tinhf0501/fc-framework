@@ -1,0 +1,43 @@
+{
+  "groups": [
+    {
+      "name": "fcm.logging",
+      "type": "com.fcm.web.properties.LoggingProperties",
+      "sourceType": "com.fcm.web.properties.LoggingProperties"
+    },
+    {
+      "name": "fcm.open-api",
+      "type": "com.fcm.web.properties.OpenApiProperties",
+      "sourceType": "com.fcm.web.properties.OpenApiProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "fcm.logging.ignoresPath",
+      "description": "paths will be ignored logging request/response",
+      "type": "java.util.Set"
+    },
+    {
+      "name": "fcm.open-api.title",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "fcm.open-api.version",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "fcm.open-api.description",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "fcm.open-api.token-url",
+      "type": "java.lang.String",
+      "defaultValue": "http://localhost:8000/oauth2/token"
+    },
+    {
+      "name": "fcm.open-api.authorization-url",
+      "type": "java.lang.String",
+      "defaultValue": "http://localhost:8000/oauth2/authorize"
+    }
+  ]
+}

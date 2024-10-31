@@ -11,7 +11,7 @@ public enum ErrorCode {
     SUCCESS("00", "Success"),
     VALIDATE_FAIL("01", "Đầu vào không hợp lệ"),
     NOT_FOUND_RECORD("02", "Không tìm thấy bản ghi tương ứng"),
-    MEMBER_EXISTS("03","Thành viên gắn với username và fc đã tồn tại"),
+    CREATE_FC_FAIL("03","Tạo FC không thành công"),
     INTERNAL_ERROR("99","Lỗi hệ thống"),
     UNKNOWN("", "Không xác định");
 

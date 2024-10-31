@@ -1,2 +1,3 @@
 com.fcm.web.autoconfiguration.OpenApiConfiguration
 com.fcm.web.filter.LoggingFilter
+com.fcm.web.advice.ApiExceptionHandler

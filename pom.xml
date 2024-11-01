@@ -10,12 +10,14 @@
     <modules>
         <module>common</module>
         <module>fcm-starter-web</module>
+        <module>fcm-starter-openfeign</module>
     </modules>
 
     <properties>
         <java.version>17</java.version>
         <fcm.version>0.0.1</fcm.version>
         <spring.version>3.3.5</spring.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -39,6 +41,14 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>com.fcm</groupId>
                 <artifactId>common</artifactId>
                 <version>${fcm.version}</version>
@@ -47,6 +57,12 @@
             <dependency>
                 <groupId>com.fcm</groupId>
                 <artifactId>fcm-starter-web</artifactId>
+                <version>${fcm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fcm</groupId>
+                <artifactId>fcm-starter-openfeign</artifactId>
                 <version>${fcm.version}</version>
             </dependency>
         </dependencies>

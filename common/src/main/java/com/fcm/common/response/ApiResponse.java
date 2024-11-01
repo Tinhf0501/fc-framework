@@ -1,12 +1,10 @@
 package com.fcm.common.response;
 
-import com.fcm.common.constant.AppConstants;
+import com.fcm.common.constant.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.fcm.common.constant.Status;
-import com.fcm.common.constant.ErrorCode;
 import org.slf4j.MDC;
 
 @NoArgsConstructor
@@ -16,28 +14,28 @@ import org.slf4j.MDC;
 public class ApiResponse {
     private ApiBody apiBody;
     private ApiError apiError;
-    private ErrorCode code;
-    private Status status;
+    private String code;
+    private String message;
     private String traceId;
     private long duration;
 
     public static ApiResponse ok(ApiBody apiBody) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setStatus(Status.SUCCESS);
-        apiResponse.setCode(ErrorCode.SUCCESS);
+        apiResponse.setCode(CommonErrorCode.SUCCESS.getCode());
+        apiResponse.setMessage(CommonErrorCode.SUCCESS.getMessage());
         apiResponse.setApiBody(apiBody);
         return apiResponse;
     }
 
-    public static ApiResponse fail(ErrorCode code, ApiError apiError) {
+    public static ApiResponse fail(IErrorCode code, ApiError apiError) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setStatus(Status.FAIL);
-        apiResponse.setCode(code);
+        apiResponse.setCode(code.getCode());
+        apiResponse.setMessage(code.getMessage());
         apiResponse.setApiError(apiError);
         return apiResponse;
     }
 
-    public static ApiResponse fail(ErrorCode code) {
+    public static ApiResponse fail(IErrorCode code) {
         ApiError apiError = new ApiError(code.getMessage(), null);
         return ApiResponse.fail(code, apiError);
     }

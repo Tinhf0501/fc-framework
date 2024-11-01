@@ -13,6 +13,7 @@ public enum Message {
     UPDATE_FC_SUCCESS("UPDATE_FC_SUCCESS", "Cập nhật đội bóng thành công!"),
     SEARCH_FC_SUCCESS("SEARCH_FC_SUCCESS", "Tìm kiếm danh sách đội bóng thành công!"),
     GET_DETAIL_FC_SUCCESS("GET_DETAIL_FC_SUCCESS", "Lấy thông tin chi tiết đội bóng thành công!"),
+    CREATE_USER_SUCCESS("CREATE_USER_SUCCESS", "Tạo mới user thành công!"),
     UNKNOWN("UNKNOWN", "Không xác định");
 
     private final String code;

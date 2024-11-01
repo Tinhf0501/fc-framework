@@ -1,6 +1,7 @@
 package com.fcm.common.response;
 
 import com.fcm.common.constant.AppConstants;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import org.slf4j.MDC;
 @NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
 public class ApiResponse {
     private ApiBody apiBody;
     private ApiError apiError;

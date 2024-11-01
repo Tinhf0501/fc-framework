@@ -1,0 +1,9 @@
+{
+  "groups": [
+    {
+      "name": "fcm.cache",
+      "type": "com.fcm.cache.CacheProperties",
+      "sourceType": "com.fcm.cache.CacheProperties"
+    }
+  ]
+}

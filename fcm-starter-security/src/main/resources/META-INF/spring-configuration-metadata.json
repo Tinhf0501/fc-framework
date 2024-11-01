@@ -1,0 +1,16 @@
+{
+  "groups": [
+    {
+      "name": "fcm.security",
+      "type": "com.fcm.security.SecurityProperties",
+      "sourceType": "com.fcm.security.SecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "fcm.security.public-url",
+      "type": "java.util.Set",
+      "description": "urls will be ignore authentication process"
+    }
+  ]
+}

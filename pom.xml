@@ -11,6 +11,7 @@
         <module>common</module>
         <module>fcm-starter-web</module>
         <module>fcm-starter-openfeign</module>
+        <module>fcm-starter-security</module>
     </modules>
 
     <properties>
@@ -63,6 +64,12 @@
             <dependency>
                 <groupId>com.fcm</groupId>
                 <artifactId>fcm-starter-openfeign</artifactId>
+                <version>${fcm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fcm</groupId>
+                <artifactId>fcm-starter-security</artifactId>
                 <version>${fcm.version}</version>
             </dependency>
         </dependencies>

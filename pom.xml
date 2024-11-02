@@ -13,6 +13,7 @@
         <module>fcm-starter-openfeign</module>
         <module>fcm-starter-security</module>
         <module>fcm-starter-cache</module>
+        <module>fcm-starter-data-jpa</module>
     </modules>
 
     <properties>
@@ -77,6 +78,12 @@
             <dependency>
                 <groupId>com.fcm</groupId>
                 <artifactId>fcm-starter-cache</artifactId>
+                <version>${fcm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fcm</groupId>
+                <artifactId>fcm-starter-data-jpa</artifactId>
                 <version>${fcm.version}</version>
             </dependency>
         </dependencies>

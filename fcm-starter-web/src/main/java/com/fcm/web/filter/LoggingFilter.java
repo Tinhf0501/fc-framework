@@ -34,6 +34,9 @@ public class LoggingFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
+        final String traceId = this.generateTraceId(request);
+        MDC.put(AppConstants.TRACE_ID_KEY, traceId);
+        MDC.put(AppConstants.START_TIME, String.valueOf(System.currentTimeMillis()));
         final String requestURI = request.getRequestURI();
         return this.loggingProperties.getIgnoresPath().stream().anyMatch(path -> new AntPathMatcher().match(path, requestURI));
     }
@@ -44,9 +47,6 @@ public class LoggingFilter extends OncePerRequestFilter {
         final ContentCachingResponseWrapper resp = new ContentCachingResponseWrapper(response);
         String requestUri = null;
         try {
-            final String traceId = this.generateTraceId(request);
-            MDC.put(AppConstants.TRACE_ID_KEY, traceId);
-            MDC.put(AppConstants.START_TIME, String.valueOf(System.currentTimeMillis()));
             if (Objects.isNull(contentType) || !contentType.contains(MediaType.MULTIPART_FORM_DATA_VALUE)) {
                 final RequestWrapper requestWrapper = new RequestWrapper(request);
                 final Object requestBody = this.getRequestBody(requestWrapper);

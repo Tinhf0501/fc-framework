@@ -7,37 +7,41 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.slf4j.MDC;
 
+import java.util.Objects;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @AllArgsConstructor
-public class ApiResponse {
-    private ApiBody apiBody;
-    private ApiError apiError;
+public class ApiResponse<T> {
+    private T data;
     private String code;
     private String message;
     private String traceId;
     private long duration;
 
-    public static ApiResponse ok(ApiBody apiBody) {
-        ApiResponse apiResponse = new ApiResponse();
+    public static <T> ApiResponse<T> ok(T data, IMessage message) {
+        final ApiResponse<T> apiResponse = ok(data);
+        apiResponse.setMessage(message.getValue());
+        return apiResponse;
+    }
+
+    public static <T> ApiResponse<T> ok(T data) {
+        ApiResponse<T> apiResponse = new ApiResponse<>();
         apiResponse.setCode(CommonErrorCode.SUCCESS.getCode());
         apiResponse.setMessage(CommonErrorCode.SUCCESS.getMessage());
-        apiResponse.setApiBody(apiBody);
+        apiResponse.setData(data);
         return apiResponse;
     }
 
-    public static ApiResponse fail(IErrorCode code, ApiError apiError) {
-        ApiResponse apiResponse = new ApiResponse();
+    public static <T> ApiResponse<T> fail(IErrorCode code, Object...params) {
+        if (Objects.isNull(params)) {
+            params = new Object[]{};
+        }
+        ApiResponse<T> apiResponse = new ApiResponse<>();
         apiResponse.setCode(code.getCode());
-        apiResponse.setMessage(code.getMessage());
-        apiResponse.setApiError(apiError);
+        apiResponse.setMessage(String.format(code.getMessage(), params));
         return apiResponse;
-    }
-
-    public static ApiResponse fail(IErrorCode code) {
-        ApiError apiError = new ApiError(code.getMessage(), null);
-        return ApiResponse.fail(code, apiError);
     }
 
     public String getTraceId() {
